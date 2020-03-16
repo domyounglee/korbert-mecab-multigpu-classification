@@ -1,0 +1,19 @@
+BERT_BASE_DIR="/root/workspace"
+python run_classifier_ETRI_multigpu.py \
+  --task_name=emot \
+  --vocab_file=$BERT_BASE_DIR/vocab.korean_morp.list \
+  --bert_config_file=$BERT_BASE_DIR/bert_config.json \
+  --init_checkpoint=$BERT_BASE_DIR/ETRI_pretrained/model.ckpt\
+  --do_train=True \
+  --data_dir=$BERT_BASE_DIR/data \
+  --do_eval=True \
+  --do_predict=False \
+  --do_lower_case=False \
+  --train_batch_size=8 \
+  --learning_rate=8.5e-5 \
+  --num_train_epochs=3.0 \
+  --save_checkpoints_steps=1000 \
+  --max_seq_length=128 \
+  --output_dir=$BERT_BASE_DIR/model/test \
+  --num_gpus=4 \
+  --use_tpu=False 
